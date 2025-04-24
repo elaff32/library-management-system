@@ -13,7 +13,8 @@ public class LibrarySystem {
             System.out.println("3. Search Book");
             System.out.println("4. Borrow Book");
             System.out.println("5. Return Book");
-            System.out.println("6. Exit");
+          System.out.println("6. Exit [Sort Feature]");
+
             System.out.println("8. Show Books Sorted by Title");
 
             System.out.print("Choose: ");
