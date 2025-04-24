@@ -13,9 +13,9 @@ public class LibrarySystem {
             System.out.println("3. Search Book");
             System.out.println("4. Borrow Book");
             System.out.println("5. Return Book");
-          System.out.println("6. Exit [Sort Feature]");
-
-            System.out.println("8. Show Books Sorted by Title");
+               System.out.println("6. Exit");
+                System.out.println("7. Save Books to File");
+                System.out.println("8. Show Books Sorted by Title");
 
             System.out.print("Choose: ");
             int choice = scanner.nextInt(); scanner.nextLine();
@@ -27,7 +27,10 @@ public class LibrarySystem {
                 case 4 -> borrowBook();
                 case 5 -> returnBook();
                 case 6 -> { System.out.println("Exiting..."); return; }
+
+             case 7 -> saveBooksToFile();
                 case 8 -> showBooksSorted();
+              
 
                 default -> System.out.println("Invalid choice.");
             }
@@ -88,11 +91,19 @@ public class LibrarySystem {
         } else {
             System.out.println("Invalid or not borrowed.");
         }
+    }private static void saveBooksToFile() {
+    try (java.io.PrintWriter w = new java.io.PrintWriter("books.txt")) {
+        for (Book b : books) w.println(b);
+        System.out.println("Books saved!");
+    } catch (Exception e) {
+        System.out.println("Error: "+e.getMessage());
     }
     private static void showBooksSorted() {
     books.stream()
          .sorted((a,b)->a.getTitle().compareToIgnoreCase(b.getTitle()))
          .forEach(System.out::println);
+}
+
 }
 
 }
